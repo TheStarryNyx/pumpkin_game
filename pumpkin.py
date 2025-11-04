@@ -393,9 +393,7 @@ def pong_difficulty_menu():
             selected_option = (selected_option - 1) % len(options)
         if 'down' in keys_pressed:
             selected_option = (selected_option + 1) % len(options)
-        if 'space' in keys_pressed:
-            return speed[selected_option]
-        if 'return' in keys_pressed:
+        if 'space' in keys_pressed or 'return' in keys_pressed:
             return speed[selected_option]
         if 'escape' in keys_pressed:
             return None
