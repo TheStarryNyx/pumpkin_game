@@ -242,7 +242,7 @@ def start_menu():
             selected_option = (selected_option - 1) % len(menu_options)
         if 'down' in keys_pressed: 
             selected_option = (selected_option + 1) % len(menu_options)
-        if 'space' in keys_pressed: 
+        if 'space' in keys_pressed or 'return' in keys_pressed: 
             return selected_option
         if 'escape' in keys_pressed:
             window.close()
@@ -341,7 +341,7 @@ def skin_store(pong_high_score, squash_high_score):
         if 'right' in keys:
             if scroll_index < len(skins) - 1:
                 scroll_index += 1
-        if 'space' in keys:
+        if 'space' in keys or 'return' in keys:
             # equip only if unlocked
             unlock_score = skin_unlock_scores[selected_part][skins[scroll_index]]
             if unlock_score <= pong_high_score:
@@ -394,6 +394,8 @@ def pong_difficulty_menu():
         if 'down' in keys_pressed:
             selected_option = (selected_option + 1) % len(options)
         if 'space' in keys_pressed:
+            return speed[selected_option]
+        if 'return' in keys_pressed:
             return speed[selected_option]
         if 'escape' in keys_pressed:
             return None
@@ -546,7 +548,7 @@ def run_pong(ball_speed_x, pong_high_score):
                         pong_game_running = False # restarts the game
                         window.clearBuffer() # clear the window
                         break
-                    if 'space' in keys_pressed or 'escape' in keys_pressed: 
+                    if 'space' in keys_pressed or 'escape' in keys_pressed or 'return' in keys_pressed: 
                         return pong_high_score
 
             # move ball
@@ -604,7 +606,7 @@ def run_pong(ball_speed_x, pong_high_score):
                         pong_game_running = False # restarts the game
                         window.clearBuffer() # clear the window
                         break
-                    if 'space' in keys_pressed or 'escape' in keys_pressed: 
+                    if 'space' in keys_pressed or 'escape' in keys_pressed or 'return' in keys_pressed: 
                         return pong_high_score
 
             # draw everything
@@ -702,7 +704,7 @@ def squash_difficulty_menu():
             selected_option = (selected_option - 1) % len(options)
         if 'down' in keys_pressed:
             selected_option = (selected_option + 1) % len(options)
-        if 'space' in keys_pressed:
+        if 'space' in keys_pressed or 'return' in keys_pressed:
             return difficulty[selected_option]
         if 'escape' in keys_pressed:
             return None # exits the difficulty selection --> returns to the start
@@ -745,7 +747,7 @@ def squash_game_time_menu():
             selected_option = (selected_option - 1) % len(options)
         if 'down' in keys_pressed:
             selected_option = (selected_option + 1) % len(options)
-        if 'space' in keys_pressed:
+        if 'space' in keys_pressed or 'return' in keys_pressed:
             return total_game_time[selected_option]
         if 'escape' in keys_pressed:
             return None # exits the difficulty selection --> returns to the start
@@ -892,7 +894,7 @@ def squash_squash_game(squash_difficulty, total_game_time, squash_high_score):
                 replay_squash_game = True  # restarts the game
                 window.clearBuffer()       # clear the window
                 break
-            if 'space' in keys_pressed or 'escape' in keys_pressed: 
+            if 'space' in keys_pressed or 'escape' in keys_pressed or 'return' in keys_pressed: 
                 return squash_high_score
 
             core.wait(1/60.0)
